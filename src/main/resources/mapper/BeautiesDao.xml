@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.qiujie.admin.dao.BeautiesDao">
+    <select id="listBeauties" resultType="com.qiujie.admin.pojo.po.Beauties" parameterType="java.util.Map">
+        select pid,pname,price,age,pimage,pdesc from beauties limit #{offset},#{pageSize}
+    </select>
+
+    <select id="getTotalBeauties" resultType="int">
+        select count(pid) from beauties
+    </select>
+
+    <delete id="removeBeautiesByPid">
+        delete from beauties where pid=#{pid}
+    </delete>
+
+    <update id="addBeauties" parameterType="java.util.Map">
+        insert into beauties(pname,price,pimage,pdesc,age)
+        VALUES(#{pname},#{price},#{pimage},#{pdesc},#{age})
+    </update>
+
+    <update id="updateBeauties" parameterType="java.util.Map">
+        update beauties set pname=#{pname},price=#{price},pdesc=#{pdesc},age=#{age} where pid=#{pid}
+
+    </update>
+</mapper>

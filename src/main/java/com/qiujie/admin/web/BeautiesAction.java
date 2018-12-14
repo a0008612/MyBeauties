@@ -45,7 +45,6 @@ public class BeautiesAction {
     @RequestMapping(value = "/addBeauties",method = RequestMethod.POST)
     public void addBeauties(HttpServletResponse response, @RequestBody Map map){
 //        response.setHeader("Access-Control-Allow-Origin", "*");
-//        System.out.println(map);
         int resulta = beautiesService.addBeauties(map);
     }
 
